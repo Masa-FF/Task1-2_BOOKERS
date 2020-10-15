@@ -5,6 +5,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Book.find(params[:id])
   end
 
   def new
@@ -17,6 +18,22 @@ class BooksController < ApplicationController
   end
 
   def edit
+    @book = Book.find(params[:id])
+  end
+  
+  def update
+    book = Book.find(params[:id])
+    book.update(book_params)
+    redirect_to controller: :books, action: :show
+  end
+
+  def destroy
+    book = Book.find(params[:id])
+    if book.destroy
+      redirect_to books_path, success: "Book was successfully destroyed."
+    else
+      redirect_to books_path, warning: "failed"
+    end
   end
 
   private
