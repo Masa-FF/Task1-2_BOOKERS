@@ -11,3 +11,5 @@
     <br> <%= f.submit 'Update Book' %>
     <%= render 'layouts/error_messages', book: @book %>
 <% end %>
+
+<%= link_to 'Show', book_path(@book.id) %>  |  <%= link_to :Back , books_path %>
