@@ -9,4 +9,5 @@
     <p>Body</p>
     <%= f.text_area :body %>
     <br> <%= f.submit 'Update Book' %>
+    <%= render 'layouts/error_messages', book: @book %>
 <% end %>

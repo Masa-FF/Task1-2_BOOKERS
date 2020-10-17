@@ -1,15 +1,13 @@
 <%= flash[:success] %>
-<%= flash[:alert] %>
 
 <h1>Books</h1>
 <table>
   <tr>
     <th>Title</th>
     <th>Body</th>
-    <th></th>
   </tr>
- 
-  <% @books.each do |book| %>
+  
+<% @books.each do |book| %>
     <tr>
       <td><%= book.title %></td>
       <td><%= book.body %></td>
@@ -17,8 +15,9 @@
       <td><%= link_to 'Edit', edit_book_path(book) %></td>
       <td><%= link_to 'Destroy', book_path(book), method: :delete, data: {confirm: "Are you sure?"} %></td>
     </tr>
-  <% end %>
+<% end %>
 </table>
+	
 <%= form_with model:@book, local:true do |f| %>
     <h2>New Book</h2>
     <p>Title</p>
@@ -26,4 +25,6 @@
     <p>Body</p>
     <%= f.text_area :body %>
     <br> <%= f.submit 'Create Book' %>
+    <%= render 'layouts/error_messages', book: @book %>
 <% end %>
+
